@@ -25,39 +25,9 @@ vp ← {-⟜origin lower_left_corner + viewport_width‿viewport_height‿1 × �
 #  𝕨 +˝∘×⎉1‿∞ 𝕩
 #}
 
-Dot ← {
-  1≡⊑≠𝕨? ≍+´ (⥊𝕨) × <˘ 𝕩;
-  1≡1⊑≢𝕩? (≠𝕨)‿1⥊ (+´(⥊𝕩)⊸×)˘𝕨;
-  𝕨 +˝∘×⎉1‿∞ 𝕩
-}
-
-DotVV ← {
-  𝕨 +˝∘×⎉1‿∞ 𝕩
-}
-
-HitSphere ← {
-  center‿radius‿r:
-  origin ← 3↑r
-  direction ← 3↓r
-  oc ← origin - center
-  a ← ⊑ direction DotVV direction
-  b ← ⊑ 2 × oc DotVV direction
-  c ← (⊑ oc DotVV oc) - radius × radius
-  discriminant ← (b × b) - 4 × a × c
-  #•Out (•Repr oc)∾", "∾(•Repr a)∾", "∾(•Repr b)∾", "∾(•Repr c)∾", "∾(•Repr discriminant)
-  (discriminant < 0) ◶ ⟨((-b) - √discriminant) ÷ 2 × a, ¯1⟩ @
-}
-
-RayAt ← {
-  r 𝕊 t:
-  origin ← 3↑r
-  direction ← 3↓r
-  origin + direction × t
-}
-
 ColorRay ← {
   𝕊 r:
-  t ← HitSphere ⟨0, 0, ¯1⟩‿0.5‿r
+  t ← rt.HitSphere ⟨0, 0, ¯1⟩‿0.5‿r
   (t > 0) ◶ ⟨
     {𝕤
       t ← 0.5 × 1 + 1⊑ rt.Unit r
@@ -65,7 +35,7 @@ ColorRay ← {
       c
     }
     {𝕤
-      n ← rt.Unit (r RayAt t) - 0‿0‿¯1
+      n ← rt.Unit (r rt.RayAt t) - 0‿0‿¯1
       c ← 0.5 × n + 1
       c
     }
