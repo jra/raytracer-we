@@ -21,7 +21,7 @@ b ← 256‿256‿3 ⥊ ∾ ⥊ ⍉ ∾⟜0.25¨ ((nrows_b-1)÷˜↕nrows_b) ∾
 
 #•Show 0 ⊏ b
 
-"b.ppm" rt.WritePPM b
+#"b.ppm" rt.WritePPM b
 
 ! (√3) = rt.Length 1‿1‿1
 ! (√12) = rt.Length 2‿2‿2
@@ -30,3 +30,10 @@ b ← 256‿256‿3 ⥊ ∾ ⥊ ⍉ ∾⟜0.25¨ ((nrows_b-1)÷˜↕nrows_b) ∾
 ! 1 = rt.Length rt.Unit 1‿1‿1
 ! 1 = rt.Length rt.Unit 2‿2‿2
 ! 1 = rt.Length rt.Unit 1‿2‿3
+
+h‿r ← rt.HitSphere ⟨0, 0, ¯1⟩‿1‿⟨0, 0, 0, 0, 0, ¯1⟩‿0‿∞
+•Show h
+•Show r.p
+•Show r.t
+•Show r.normal
+•Show r.front_face
