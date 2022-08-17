@@ -24,17 +24,11 @@ ShowArray ← {
   FirstLast3¨ <˘¯3↑a
 }
 
-LengthSquared ← {
-  +´ 𝕩 × 𝕩
-}
+LengthSquared ← +´⋆⟜2
 
-Length ← {
-  √ LengthSquared 𝕩
-}
+Length ← √LengthSquared
 
-UnitVector ← {
-  𝕩 ÷ Length 𝕩
-}
+UnitVector ← ⊢÷Length
 
 RayColor ← {
   𝕊 r:
